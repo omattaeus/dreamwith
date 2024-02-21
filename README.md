@@ -1,5 +1,5 @@
 # Sistema de Gerenciamento Museu | DreamWith
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Angular](https://img.shields.io/badge/angular-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ------
 ## SOBRE O SISTEMA
 O Sistema tem como objetivo o gerenciamento de um Museu, como o controle de clientes atráves de cadastro com login, também sendo possível editar dados de clientes quando necessário.
