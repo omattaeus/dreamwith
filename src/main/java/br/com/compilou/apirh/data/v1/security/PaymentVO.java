@@ -1,6 +1,7 @@
 package br.com.compilou.apirh.data.v1.security;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -10,6 +11,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+@JsonPropertyOrder({"id", "nameCompany", "cnpj", "addressCompany",
+        "office", "inss", "fgts", "union", "voucher", "advances", "netSalary",
+        "grossSalary", "workDays", "extraHours"})
 public class PaymentVO extends RepresentationModel<EmployeeVO>
         implements Serializable {
 
@@ -19,8 +23,8 @@ public class PaymentVO extends RepresentationModel<EmployeeVO>
     @JsonProperty("id")
     @Mapping("id")
     private long key;
-    private String cnpj;
     private String nameCompany;
+    private String cnpj;
     private String addressCompany;
     private BigDecimal inss;
     private BigDecimal fgts;
