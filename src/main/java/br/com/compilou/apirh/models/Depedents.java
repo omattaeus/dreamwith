@@ -14,15 +14,16 @@ public class Depedents implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(unique = true)
     private String cpf;
-
+    @Column(nullable = false, length = 50)
     private String name;
+    @Column(nullable = false, length = 50)
+    private String surname;
+    @Column(nullable = false, length = 10)
     private String birthday;
-
     @ManyToOne
     private Employee employee;
 
@@ -52,6 +53,14 @@ public class Depedents implements Serializable {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getBirthday() {
         return birthday;
     }
@@ -73,11 +82,11 @@ public class Depedents implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Depedents depedents = (Depedents) o;
-        return Objects.equals(id, depedents.id) && Objects.equals(cpf, depedents.cpf) && Objects.equals(name, depedents.name) && Objects.equals(birthday, depedents.birthday) && Objects.equals(employee, depedents.employee);
+        return Objects.equals(id, depedents.id) && Objects.equals(cpf, depedents.cpf) && Objects.equals(name, depedents.name) && Objects.equals(surname, depedents.surname) && Objects.equals(birthday, depedents.birthday) && Objects.equals(employee, depedents.employee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cpf, name, birthday, employee);
+        return Objects.hash(id, cpf, name, surname, birthday, employee);
     }
 }

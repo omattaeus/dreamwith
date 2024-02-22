@@ -13,5 +13,4 @@ public class ApirhApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApirhApplication.class, args);
 	}
-
 }

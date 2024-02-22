@@ -2,8 +2,8 @@ package br.com.compilou.apirh.services;
 
 import br.com.compilou.apirh.Jwt.JwtTokenProvider;
 import br.com.compilou.apirh.repositories.UserRepository;
-import br.com.compilou.apirh.v1.security.AccountCredentialsVO;
-import br.com.compilou.apirh.v1.security.TokenVO;
+import br.com.compilou.apirh.data.v1.security.AccountCredentialsVO;
+import br.com.compilou.apirh.data.v1.security.TokenVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

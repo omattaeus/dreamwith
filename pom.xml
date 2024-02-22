@@ -176,7 +176,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<configuration>
 					<url>
-						jdbc:mysql://localhost:3306/apibook?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false
+						jdbc:mysql://localhost:3306/dreamwith?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false
 					</url>
 					<user>mateus3</user>
 					<password>12345678@Ta</password>

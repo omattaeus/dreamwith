@@ -1,3 +1,4 @@
+/*
 package br.com.compilou.apirh.controllers;
 
 import br.com.compilou.apirh.models.Candidate;
@@ -21,24 +22,12 @@ public class VacancyController {
     @Autowired
     private CandidateRepository cand;
 
-    @GetMapping(value = "/vacancyRegister")
+    @GetMapping(value = "/vacancy")
     public String form(){
         return "./templates/vacancy/formVacancy.html";
     }
 
-    @PostMapping(value = "/vacancyRegister")
-    public String form(@Valid Vacancy vacancy, BindingResult result, RedirectAttributes attributes){
-        if(result.hasErrors()){
-            attributes.addFlashAttribute("message", "Check the fields...");
-            return "redirect:/vacancyRegister";
-        }
-
-        vac.save(vacancy);
-        attributes.addFlashAttribute("message", "Vacancy registered successfully!");
-        return "redirect:/vacancyRegister";
-    }
-
-    @GetMapping("/vacancy")
+    @GetMapping("/vacancy-list")
     public ModelAndView vacancyList(){
         ModelAndView mv = new ModelAndView("./templates/vacancy/vacancyList.html");
         Iterable<Vacancy> vacancies = vac.findAll();
@@ -58,11 +47,16 @@ public class VacancyController {
         return mv;
     }
 
-    @DeleteMapping(value = "/deletevancy")
-    public String deleteVacancy(Long code){
-        Vacancy vacancy = vac.findByCode(code);
-        vac.delete(vacancy);
-        return "redirect:/vacancy";
+    @PostMapping(value = "/vacancy-register")
+    public String form(@Valid Vacancy vacancy, BindingResult result, RedirectAttributes attributes){
+        if(result.hasErrors()){
+            attributes.addFlashAttribute("message", "Check the fields...");
+            return "redirect:/vacancyRegister";
+        }
+
+        vac.save(vacancy);
+        attributes.addFlashAttribute("message", "Vacancy registered successfully!");
+        return "redirect:/vacancyRegister";
     }
 
     @PostMapping(value = "/vacancypost/{code}")
@@ -84,7 +78,25 @@ public class VacancyController {
         return "redirect:/vacancy/{code}";
     }
 
-    @DeleteMapping("deletecanddel")
+    @PutMapping(value = "/edit")
+    public String updateVacancy(@Valid Vacancy vacancy, BindingResult result, RedirectAttributes attributes){
+        vac.save(vacancy);
+        attributes.addFlashAttribute("success", "Vacancy changed successfully!");
+
+        Long codeLong = vacancy.getId();
+        String code = "" + codeLong;
+        return "redirect:/vacancy/" + code;
+    }
+
+    @PutMapping("/edit-vacancy")
+    public ModelAndView editVacancy(Long code){
+        Vacancy vacancy = vac.findByCode(code);
+        ModelAndView mv = new ModelAndView("./templates/vacancy/updateVacancy.html");
+        mv.addObject("vacancy", vacancy);
+        return mv;
+    }
+
+    @DeleteMapping("delete-candidate")
     public String deleteCandidate(String rg){
         Candidate candidate = cand.findByRg(rg);
         Vacancy vacancy = candidate.getVacancy();
@@ -95,21 +107,11 @@ public class VacancyController {
         return "redirect:/vacancy/" + code;
     }
 
-    @GetMapping("/editvacancy")
-    public ModelAndView editVacancy(Long code){
+    @DeleteMapping(value = "/delete-vacancy")
+    public String deleteVacancy(Long code){
         Vacancy vacancy = vac.findByCode(code);
-        ModelAndView mv = new ModelAndView("./templates/vacancy/updateVacancy.html");
-        mv.addObject("vacancy", vacancy);
-        return mv;
-    }
-
-    @PostMapping(value = "/editvacancypost")
-    public String updateVacancy(@Valid Vacancy vacancy, BindingResult result, RedirectAttributes attributes){
-        vac.save(vacancy);
-        attributes.addFlashAttribute("success", "Vacancy changed successfully!");
-
-        Long codeLong = vacancy.getId();
-        String code = "" + codeLong;
-        return "redirect:/vacancy/" + code;
+        vac.delete(vacancy);
+        return "redirect:/vacancy";
     }
 }
+ */
